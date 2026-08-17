@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ragini Sharma | Handmade Crochet Creations</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..800;1,400..800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- JSZip & FileSaver for downloading ZIP bundle -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fdf8f6',
+                            100: '#f2e8e5',
+                            200: '#e5d1cb',
+                            300: '#d3b2a7',
+                            400: '#be8c7e',
+                            500: '#a76d5f',
+                            600: '#8c5346',
+                            700: '#724237',
+                            800: '#5c362d',
+                            900: '#4c2e27',
+                        },
+                        yarn: '#e0c9b1',
+                        rosewood: '#653239',
+                        sage: '#8a9a86',
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .yarn-pattern {
+            background-color: #fdf8f6;
+            background-image: radial-gradient(#d3b2a7 0.75px, transparent 0.75px), radial-gradient(#d3b2a7 0.75px, #fdf8f6 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0,15px 15px;
+        }
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f2e8e5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #be8c7e;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a76d5f;
+        }
+    </style>
+</head>
+<body class="bg-brand-50 text-stone-800 font-sans antialiased smooth-scroll min-h-screen flex flex-col justify-between">
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-brand-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Brand Logo & Name -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-12 h-12 rounded-full bg-brand-100 border border-brand-300 flex items-center justify-center text-brand-600 group-hover:scale-105 transition-transform duration-300">
+                        <i class="fa-solid fa-hands-holding-circle text-2xl"></i>
+                    </div>
+                    <div>
+                        <span class="font-serif text-2xl font-bold tracking-tight text-brand-900 block leading-none">Ragini Sharma</span>
+                        <span class="text-xs tracking-widest text-brand-500 uppercase font-semibold">Crochet & Fiber Art</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Navigation Links -->
+                <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-stone-600">
+                    <a href="#about" class="hover:text-brand-600 transition-colors">About</a>
+                    <a href="#products" class="hover:text-brand-600 transition-colors">Products Showcase</a>
+                    <a href="#contact" class="hover:text-brand-600 transition-colors">Get In Touch</a>
+                </nav>
+
+                <!-- Action Controls -->
+                <div class="flex items-center gap-4">
+                    <!-- Cart Button -->
+                    <button onclick="toggleCartModal(true)" class="relative p-2.5 rounded-full text-stone-700 hover:bg-brand-100 transition-all focus:outline-none" title="View Cart">
+                        <i class="fa-solid fa-bag-shopping text-xl"></i>
+                        <span id="cart-badge" class="absolute -top-1 -right-1 bg-brand-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center border-2 border-white">0</span>
+                    </button>
+
+                    <!-- Mobile Menu Button -->
+                    <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg text-stone-700 hover:bg-brand-100">
+                        <i id="menu-icon" class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-brand-100 bg-brand-50 px-4 pt-3 pb-6 space-y-3">
+            <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-stone-700 font-medium hover:text-brand-600">About</a>
+            <a href="#products" onclick="toggleMobileMenu()" class="block py-2 text-stone-700 font-medium hover:text-brand-600">Products Showcase</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block py-2 text-stone-700 font-medium hover:text-brand-600">Get In Touch</a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Hero & Intro Section -->
+        <section id="about" class="relative yarn-pattern py-16 lg:py-24 overflow-hidden border-b border-brand-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <div class="lg:col-span-7 space-y-6">
+                        <div class="inline-flex items-center gap-2 bg-brand-100 text-brand-700 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase border border-brand-200">
+                            <i class="fa-solid fa-heart text-brand-500"></i>
+                            Handmade with Love & Care
+                        </div>
+                        
+                        <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-brand-900 leading-tight">
+                            Woven Stories,<br/>Stitch by Gentle Stitch.
+                        </h1>
+
+                        <!-- Attractive Crochet Intro Paragraph -->
+                        <p class="text-stone-600 text-lg sm:text-xl leading-relaxed">
+                            Welcome to my quiet corner of yarn and creativity! Hi, I'm <strong class="text-brand-800">Ragini Sharma</strong>. Every crochet creation here is crafted meticulously by hand using premium, ultra-soft organic yarns. From cosy wearable accessories to adorable plushies and timeless home decor, each loop carries warmth, passion, and personal craftsmanship designed to add joy to your life.
+                        </p>
+
+                        <div class="flex flex-wrap items-center gap-4 pt-2">
+                            <a href="#products" class="bg-brand-600 text-white hover:bg-brand-700 px-8 py-3.5 rounded-xl font-semibold transition-all shadow-md hover:shadow-lg flex items-center gap-2">
+                                <i class="fa-solid fa-sparkles"></i> Explore Products
+                            </a>
+                            <a href="#contact" class="bg-white border-2 border-brand-300 text-brand-800 hover:bg-brand-100 px-6 py-3.5 rounded-xl font-semibold transition-all">
+                                Custom Order Request
+                            </a>
+                        </div>
+
+                        <!-- Highlights Badge Row -->
+                        <div class="grid grid-cols-3 gap-4 pt-6 border-t border-brand-200/60">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-lg bg-white border border-brand-200 flex items-center justify-center text-brand-600 shadow-sm">
+                                    <i class="fa-solid fa-leaf"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xs font-bold text-stone-800 uppercase">100% Eco Yarn</h4>
+                                    <p class="text-xs text-stone-500">Soft & Sustainable</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-lg bg-white border border-brand-200 flex items-center justify-center text-brand-600 shadow-sm">
+                                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xs font-bold text-stone-800 uppercase">Custom Made</h4>
+                                    <p class="text-xs text-stone-500">Tailored to You</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-lg bg-white border border-brand-200 flex items-center justify-center text-brand-600 shadow-sm">
+                                    <i class="fa-solid fa-truck-fast"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xs font-bold text-stone-800 uppercase">Pan India</h4>
+                                    <p class="text-xs text-stone-500">Safe Packaging</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Hero Visual Showcase -->
+                    <div class="lg:col-span-5 relative">
+                        <div class="relative mx-auto max-w-md lg:max-w-none">
+                            <!-- Background Decor Decorative Circles -->
+                            <div class="absolute -top-4 -left-4 w-72 h-72 bg-brand-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
+                            <div class="absolute -bottom-4 -right-4 w-72 h-72 bg-sage/30 rounded-full mix-blend-multiply filter blur-xl opacity-70"></div>
+                            
+                            <div class="relative bg-white p-4 rounded-3xl shadow-xl border border-brand-100">
+                                <img src="https://images.unsplash.com/photo-1615397349754-cfa2066a298e?auto=format&fit=crop&w=800&q=80" alt="Crochet Artisanal Crafting" class="rounded-2xl w-full h-80 sm:h-96 object-cover" onerror="this.src='https://placehold.co/600x800/f2e8e5/724237?text=Artisanal+Crochet+Art'">
+                                <div class="absolute bottom-8 left-8 right-8 bg-white/90 backdrop-blur-md p-4 rounded-xl shadow-lg border border-brand-200">
+                                    <p class="font-serif font-bold text-brand-900 text-base">“Crochet turns simple yarn into tangible affection.”</p>
+                                    <p class="text-xs text-brand-600 font-semibold mt-1">— Ragini Sharma</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Showcase & Catalog -->
+        <section id="products" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header -->
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                    <div>
+                        <span class="text-brand-600 font-semibold text-xs uppercase tracking-widest">Handmade Catalogue</span>
+                        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-900 mt-1">Featured Creations</h2>
+                        <p class="text-stone-500 text-sm mt-2 max-w-md">Explore our handcrafted items with transparent pricing. Click on any item to view details or add to cart.</p>
+                    </div>
+
+                    <!-- Category Filters & Search -->
+                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                        <div class="relative">
+                            <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-stone-400 text-sm"></i>
+                            <input type="text" id="product-search" oninput="filterProducts()" placeholder="Search products..." class="w-full sm:w-48 pl-9 pr-4 py-2 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:ring-2 focus:ring-brand-400 focus:outline-none">
+                        </div>
+                        <select id="category-filter" onchange="filterProducts()" class="bg-stone-50 border border-stone-200 text-stone-700 text-sm rounded-xl px-4 py-2 focus:ring-2 focus:ring-brand-400 focus:outline-none">
+                            <option value="all">All Categories</option>
+                            <option value="wearables">Wearables & Apparel</option>
+                            <option value="toys">Amigurumi Plush Toys</option>
+                            <option value="accessories">Bags & Accessories</option>
+                            <option value="decor">Home Decor & Coasters</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Product Grid -->
+                <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                    <!-- Dynamic Product Cards Injected Here by JS -->
+                </div>
+
+                <!-- Empty Search Fallback -->
+                <div id="no-products-msg" class="hidden text-center py-16 bg-brand-50 rounded-2xl border border-dashed border-brand-200">
+                    <i class="fa-solid fa-basket-shopping text-4xl text-brand-300 mb-3"></i>
+                    <h3 class="text-lg font-bold text-stone-700">No matching crochet items found</h3>
+                    <p class="text-sm text-stone-500 mt-1">Try tweaking your search or selected category filter.</p>
+                    <button onclick="resetFilters()" class="mt-4 text-xs font-semibold text-brand-600 underline">Clear Filters</button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Contact & Business Details Section -->
+        <section id="contact" class="py-20 yarn-pattern border-t border-brand-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-white rounded-3xl p-8 sm:p-12 shadow-xl border border-brand-200">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                        
+                        <!-- Contact Info Column -->
+                        <div class="lg:col-span-5 space-y-8">
+                            <div>
+                                <span class="text-brand-600 font-semibold text-xs uppercase tracking-widest">Connect With The Maker</span>
+                                <h2 class="font-serif text-3xl font-bold text-brand-900 mt-1">Let’s Talk Crochet</h2>
+                                <p class="text-stone-600 text-sm mt-3 leading-relaxed">
+                                    Interested in a customized size, custom color theme, or wholesale order? Feel free to reach out directly via Instagram, Email, or WhatsApp.
+                                </p>
+                            </div>
+
+                            <!-- Contact Channels Box -->
+                            <div class="space-y-4">
+                                <!-- Instagram placeholder -->
+                                <a href="https://instagram.com" target="_blank" class="flex items-center gap-4 p-4 rounded-2xl bg-brand-50 hover:bg-brand-100 border border-brand-200 transition-all group">
+                                    <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-yellow-500 via-pink-500 to-purple-600 text-white flex items-center justify-center text-xl shadow-md group-hover:scale-110 transition-transform">
+                                        <i class="fa-brands fa-instagram"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs text-stone-500 font-medium">Instagram Handle</div>
+                                        <div id="display-insta" class="font-bold text-stone-800 text-sm sm:text-base">@ragini_crochet_art</div>
+                                    </div>
+                                    <i class="fa-solid fa-arrow-up-right-from-square text-stone-400 ml-auto text-sm group-hover:text-brand-600"></i>
+                                </a>
+
+                                <!-- Gmail placeholder -->
+                                <a href="mailto:ragini.crochet.crafts@gmail.com" class="flex items-center gap-4 p-4 rounded-2xl bg-brand-50 hover:bg-brand-100 border border-brand-200 transition-all group">
+                                    <div class="w-12 h-12 rounded-xl bg-red-500 text-white flex items-center justify-center text-xl shadow-md group-hover:scale-110 transition-transform">
+                                        <i class="fa-solid fa-envelope"></i>
+                                    </div>
+                                    <div class="overflow-hidden">
+                                        <div class="text-xs text-stone-500 font-medium">Gmail Address</div>
+                                        <div id="display-gmail" class="font-bold text-stone-800 text-sm sm:text-base truncate">ragini.crochet.crafts@gmail.com</div>
+                                    </div>
+                                    <i class="fa-solid fa-arrow-up-right-from-square text-stone-400 ml-auto text-sm group-hover:text-brand-600"></i>
+                                </a>
+
+                                <!-- WhatsApp/Phone placeholder -->
+                                <a href="https://wa.me/919876543210" target="_blank" class="flex items-center gap-4 p-4 rounded-2xl bg-brand-50 hover:bg-brand-100 border border-brand-200 transition-all group">
+                                    <div class="w-12 h-12 rounded-xl bg-emerald-500 text-white flex items-center justify-center text-xl shadow-md group-hover:scale-110 transition-transform">
+                                        <i class="fa-brands fa-whatsapp"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs text-stone-500 font-medium">Phone & WhatsApp</div>
+                                        <div id="display-phone" class="font-bold text-stone-800 text-sm sm:text-base">+91 98765 43210</div>
+                                    </div>
+                                    <i class="fa-solid fa-arrow-up-right-from-square text-stone-400 ml-auto text-sm group-hover:text-brand-600"></i>
+                                </a>
+                            </div>
+
+                        </div>
+
+                        <!-- Direct Message Form -->
+                        <div class="lg:col-span-7 bg-brand-50/70 p-6 sm:p-8 rounded-2xl border border-brand-200 flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-serif text-xl font-bold text-brand-900 mb-2">Send a Custom Inquiry</h3>
+                                <p class="text-xs text-stone-500 mb-6">Fill out your query below and we'll reply directly to your Gmail/WhatsApp.</p>
+
+                                <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-4">
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                        <div>
+                                            <label class="block text-xs font-semibold text-stone-700 mb-1">Your Name</label>
+                                            <input type="text" required placeholder="e.g. Ananya Roy" class="w-full px-4 py-2.5 bg-white border border-stone-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs font-semibold text-stone-700 mb-1">Contact Number / Email</label>
+                                            <input type="text" required placeholder="+91 98765... or email" class="w-full px-4 py-2.5 bg-white border border-stone-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-xs font-semibold text-stone-700 mb-1">Interested Product / Custom Idea</label>
+                                        <input type="text" placeholder="e.g. Cozy Pastel Daisy Bag in Light Blue" class="w-full px-4 py-2.5 bg-white border border-stone-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-xs font-semibold text-stone-700 mb-1">Your Message</label>
+                                        <textarea rows="4" required placeholder="Specify details, preferred colors, or questions..." class="w-full px-4 py-2.5 bg-white border border-stone-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none"></textarea>
+                                    </div>
+
+                                    <button type="submit" class="w-full bg-brand-700 hover:bg-brand-800 text-white font-semibold py-3 px-6 rounded-xl transition shadow-md flex items-center justify-center gap-2">
+                                        <i class="fa-solid fa-paper-plane"></i> Send Inquiry
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-900 text-brand-200 border-t border-brand-800 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-8 border-b border-brand-800">
+                <div>
+                    <h3 class="font-serif text-xl font-bold text-white">Ragini Sharma</h3>
+                    <p class="text-xs text-brand-300 mt-2 leading-relaxed">
+                        Crafting unique, high-quality crochet wearables, plushies, and custom fiber art pieces with love and passion.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-brand-400 mb-3">Quick Navigation</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#about" class="hover:text-white transition">About Maker</a></li>
+                        <li><a href="#products" class="hover:text-white transition">Products Catalogue</a></li>
+                        <li><a href="#contact" class="hover:text-white transition">Contact Details</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-brand-400 mb-3">Reach Out</h4>
+                    <p class="text-xs text-brand-300 mb-1"><i class="fa-solid fa-envelope mr-1.5"></i> ragini.crochet.crafts@gmail.com</p>
+                    <p class="text-xs text-brand-300 mb-1"><i class="fa-brands fa-instagram mr-1.5"></i> @ragini_crochet_art</p>
+                    <p class="text-xs text-brand-300"><i class="fa-solid fa-phone mr-1.5"></i> +91 98765 43210</p>
+                </div>
+            </div>
+            <div class="pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-brand-400">
+                <p>&copy; <span id="year"></span> Ragini Sharma Crochet Creations. All Rights Reserved.</p>
+                <p class="mt-2 sm:mt-0">Handcrafted with care for handmade enthusiasts.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Modal -->
+    <div id="cart-modal" class="fixed inset-0 bg-stone-900/60 backdrop-blur-sm z-50 hidden flex justify-end transition-opacity">
+        <div class="bg-white w-full max-w-md h-full shadow-2xl flex flex-col justify-between p-6 overflow-y-auto">
+            <div>
+                <div class="flex justify-between items-center pb-4 border-b border-stone-200">
+                    <h3 class="font-serif text-xl font-bold text-brand-900 flex items-center gap-2">
+                        <i class="fa-solid fa-bag-shopping text-brand-600"></i> Your Shopping Basket
+                    </h3>
+                    <button onclick="toggleCartModal(false)" class="p-2 text-stone-400 hover:text-stone-700">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Cart Items Container -->
+                <div id="cart-items-container" class="py-4 space-y-4 max-h-[60vh] overflow-y-auto">
+                    <!-- Rendered dynamically -->
+                </div>
+            </div>
+
+            <!-- Cart Summary & Checkout Actions -->
+            <div class="border-t border-stone-200 pt-4 space-y-4">
+                <div class="flex justify-between text-base font-bold text-stone-800">
+                    <span>Total Amount:</span>
+                    <span id="cart-total-price" class="text-brand-700">₹0</span>
+                </div>
+                
+                <button onclick="checkoutViaWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-xl transition flex items-center justify-center gap-2 shadow-md">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> Order via WhatsApp
+                </button>
+                <button onclick="checkoutViaEmail()" class="w-full bg-stone-800 hover:bg-stone-900 text-white font-semibold py-2.5 rounded-xl transition text-xs flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-envelope"></i> Send Order via Email
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Quick View Modal -->
+    <div id="product-modal" class="fixed inset-0 bg-stone-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeProductModal()" class="absolute top-4 right-4 p-2 text-stone-400 hover:text-stone-700 rounded-full bg-stone-100">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
+                <img id="modal-img" src="" alt="" class="w-full h-64 object-cover rounded-2xl border border-brand-100">
+                <div class="space-y-4">
+                    <span id="modal-category" class="bg-brand-100 text-brand-700 text-xs px-3 py-1 rounded-full font-semibold uppercase">Category</span>
+                    <h3 id="modal-title" class="font-serif text-2xl font-bold text-brand-900 leading-snug">Product Title</h3>
+                    <p id="modal-price" class="text-2xl font-bold text-brand-700">₹0</p>
+                    <p id="modal-desc" class="text-xs text-stone-600 leading-relaxed">Description goes here...</p>
+                    
+                    <button id="modal-add-btn" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-semibold py-3 rounded-xl transition shadow-md flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample Products Catalog Data
+        // EDIT HERE: Replace the 'image' URL with your own product image URLs.
+        const productsData = [
+            {
+                id: 1,
+                title: 'Pastel Daisy Square Tote Bag',
+                category: 'accessories',
+                price: 899,
+                image: 'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=600&q=80', // Replace this URL with your image
+                description: 'A charming hand-crocheted shoulder bag made with soft daisy granny squares. Features durable handles and inner cotton lining.'
+            },
+            {
+                id: 2,
+                title: 'Cute Amigurumi Plush Bunny',
+                category: 'toys',
+                price: 599,
+                image: 'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&w=600&q=80', // Replace this URL with your image
+                description: 'Handcrafted plush toy bunny with safety eyes and soft hypoallergenic yarn stuffing. Perfect gift for kids or nursery decor.'
+            },
+            {
+                id: 3,
+                title: 'Boho Festival Crochet Crop Top',
+                category: 'wearables',
+                price: 1199,
+                image: 'https://images.unsplash.com/photo-1516762689617-e1cffffd478d?auto=format&fit=crop&w=600&q=80', // Replace this URL with your image
+                description: 'Breathable 100% organic cotton yarn crop top with custom adjustable back ties. Soft on skin and lightweight.'
+            },
+            {
+                id: 4,
+                title: 'Handmade Coaster Set (4 Pcs)',
+                category: 'decor',
+                price: 349,
+                image: 'https://images.unsplash.com/photo-1615397349754-cfa2066a298e?auto=format&fit=crop&w=600&q=80', // Replace this URL with your image
+                description: 'Set of 4 absorbent flower-shaped crochet drink coasters. Protects tables while adding warm, rustic aesthetic.'
+            },
+            {
+                id: 5,
+                title: 'Soft Pastel Baby Blanket',
+                category: 'decor',
+                price: 1499,
+                image: 'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=600&q=80', // Replace this URL with your image
+                description: 'Ultra-gentle knitted texture crochet blanket crafted with baby-safe acrylic yarn. Keeps little ones warm and comfortable.'
+            },
+            {
+                id: 6,
+                title: 'Retro Bucket Hat in Sage',
+                category: 'wearables',
+                price: 699,
+                image: 'https://images.unsplash.com/photo-1576871337632-b9aef4c17ab9?auto=format&fit=crop&w=600&q=80', // Replace this URL with your image
+                description: 'Trendy vintage-inspired crochet bucket hat. Breathable, foldable, and perfect for sunny outdoor outings.'
+            }
+        ];
+
+        // State Management
+        let cart = [];
+
+        // DOM Loaded Initialization
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('year').textContent = new Date().getFullYear();
+            renderProducts(productsData);
+            updateCartUI();
+        });
+
+        // Render Product Cards Grid
+        function renderProducts(items) {
+            const grid = document.getElementById('products-grid');
+            const noProductsMsg = document.getElementById('no-products-msg');
+            
+            if (!items || items.length === 0) {
+                grid.innerHTML = '';
+                noProductsMsg.classList.remove('hidden');
+                return;
+            }
+
+            noProductsMsg.classList.add('hidden');
+            grid.innerHTML = items.map(product => `
+                <div class="bg-brand-50/50 rounded-2xl border border-brand-100 overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="relative overflow-hidden cursor-pointer" onclick="openProductModal(${product.id})">
+                            <img src="${product.image}" alt="${product.title}" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x600/f2e8e5/724237?text=${encodeURIComponent(product.title)}'">
+                            <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-brand-800 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-sm">
+                                ${product.category}
+                            </span>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="font-serif font-bold text-lg text-brand-900 hover:text-brand-600 transition cursor-pointer" onclick="openProductModal(${product.id})">
+                                ${product.title}
+                            </h3>
+                            <p class="text-xs text-stone-500 mt-1 line-clamp-2">${product.description}</p>
+                        </div>
+                    </div>
+
+                    <div class="p-5 pt-0 flex items-center justify-between border-t border-brand-100/60 mt-3">
+                        <div>
+                            <span class="text-[10px] text-stone-400 font-medium block">Price</span>
+                            <span class="font-bold text-lg text-brand-800">₹${product.price}</span>
+                        </div>
+                        <button onclick="addToCart(${product.id})" class="bg-brand-600 hover:bg-brand-700 text-white text-xs font-semibold px-4 py-2.5 rounded-xl transition shadow flex items-center gap-1.5">
+                            <i class="fa-solid fa-plus text-xs"></i> Add To Cart
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Filter Products Search & Category
+        function filterProducts() {
+            const searchQuery = document.getElementById('product-search').value.toLowerCase();
+            const categoryValue = document.getElementById('category-filter').value;
+
+            const filtered = productsData.filter(product => {
+                const matchesSearch = product.title.toLowerCase().includes(searchQuery) || product.description.toLowerCase().includes(searchQuery);
+                const matchesCategory = categoryValue === 'all' || product.category === categoryValue;
+                return matchesSearch && matchesCategory;
+            });
+
+            renderProducts(filtered);
+        }
+
+        function resetFilters() {
+            document.getElementById('product-search').value = '';
+            document.getElementById('category-filter').value = 'all';
+            renderProducts(productsData);
+        }
+
+        // Cart Logic
+        function addToCart(productId) {
+            const product = productsData.find(p => p.id === productId);
+            if (!product) return;
+
+            const existingIndex = cart.findIndex(item => item.id === productId);
+            if (existingIndex > -1) {
+                cart[existingIndex].quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            updateCartUI();
+            toggleCartModal(true);
+        }
+
+        function changeQuantity(productId, delta) {
+            const index = cart.findIndex(item => item.id === productId);
+            if (index > -1) {
+                cart[index].quantity += delta;
+                if (cart[index].quantity <= 0) {
+                    cart.splice(index, 1);
+                }
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const badge = document.getElementById('cart-badge');
+            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            badge.textContent = totalCount;
+
+            const itemsContainer = document.getElementById('cart-items-container');
+            const totalPriceEl = document.getElementById('cart-total-price');
+
+            if (cart.length === 0) {
+                itemsContainer.innerHTML = `
+                    <div class="text-center py-12 text-stone-400">
+                        <i class="fa-solid fa-basket-shopping text-3xl mb-2"></i>
+                        <p class="text-xs font-medium">Your basket is currently empty.</p>
+                    </div>
+                `;
+                totalPriceEl.textContent = '₹0';
+                return;
+            }
+
+            let totalCost = 0;
+            itemsContainer.innerHTML = cart.map(item => {
+                const itemTotal = item.price * item.quantity;
+                totalCost += itemTotal;
+                return `
+                    <div class="flex items-center gap-3 bg-brand-50 p-3 rounded-xl border border-brand-100">
+                        <img src="${item.image}" alt="${item.title}" class="w-14 h-14 object-cover rounded-lg">
+                        <div class="flex-grow">
+                            <h4 class="text-xs font-bold text-stone-800">${item.title}</h4>
+                            <p class="text-xs text-brand-700 font-semibold mt-0.5">₹${item.price} x ${item.quantity}</p>
+                        </div>
+                        <div class="flex items-center gap-2 bg-white px-2 py-1 rounded-lg border border-stone-200">
+                            <button onclick="changeQuantity(${item.id}, -1)" class="text-stone-500 hover:text-stone-800 text-xs font-bold px-1">-</button>
+                            <span class="text-xs font-bold text-stone-800 px-1">${item.quantity}</span>
+                            <button onclick="changeQuantity(${item.id}, 1)" class="text-stone-500 hover:text-stone-800 text-xs font-bold px-1">+</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            totalPriceEl.textContent = `₹${totalCost}`;
+        }
+
+        function toggleCartModal(show) {
+            const modal = document.getElementById('cart-modal');
+            if (show) modal.classList.remove('hidden');
+            else modal.classList.add('hidden');
+        }
+
+        // WhatsApp Order Checkout Link
+        function checkoutViaWhatsApp() {
+            if (cart.length === 0) {
+                alert('Your basket is empty. Add products before placing an order.');
+                return;
+            }
+
+            let message = "Hello Ragini! 👋 I would like to place an order for the following crochet items:\n\n";
+            let totalCost = 0;
+
+            cart.forEach((item, idx) => {
+                const itemCost = item.price * item.quantity;
+                totalCost += itemCost;
+                message += `${idx + 1}. *${item.title}* - Qty: ${item.quantity} (₹${itemCost})\n`;
+            });
+
+            message += `\n*Total Amount:* ₹${totalCost}\n\nPlease confirm availability and payment details. Thank you!`;
+            const encoded = encodeURIComponent(message);
+            window.open(`https://wa.me/919876543210?text=${encoded}`, '_blank');
+        }
+
+        // Email Order Checkout Link
+        function checkoutViaEmail() {
+            if (cart.length === 0) {
+                alert('Your basket is empty. Add products before placing an order.');
+                return;
+            }
+
+            let body = "Hi Ragini,\n\nI would like to inquire/order the following crochet items:\n\n";
+            let totalCost = 0;
+
+            cart.forEach((item, idx) => {
+                const itemCost = item.price * item.quantity;
+                totalCost += itemCost;
+                body += `${idx + 1}. ${item.title} - Qty: ${item.quantity} (₹${itemCost})\n`;
+            });
+
+            body += `\nTotal Amount: ₹${totalCost}\n\nLooking forward to hearing from you!`;
+            const mailtoUrl = `mailto:ragini.crochet.crafts@gmail.com?subject=Crochet Order Inquiry&body=${encodeURIComponent(body)}`;
+            window.location.href = mailtoUrl;
+        }
+
+        // Product Modal Details
+        function openProductModal(id) {
+            const product = productsData.find(p => p.id === id);
+            if (!product) return;
+
+            document.getElementById('modal-img').src = product.image;
+            document.getElementById('modal-title').textContent = product.title;
+            document.getElementById('modal-category').textContent = product.category;
+            document.getElementById('modal-price').textContent = `₹${product.price}`;
+            document.getElementById('modal-desc').textContent = product.description;
+            
+            const btn = document.getElementById('modal-add-btn');
+            btn.onclick = () => {
+                addToCart(product.id);
+                closeProductModal();
+            };
+
+            document.getElementById('product-modal').classList.remove('hidden');
+        }
+
+        function closeProductModal() {
+            document.getElementById('product-modal').classList.add('hidden');
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            alert('Thank you for reaching out! Ragini will get back to your inquiry shortly.');
+            e.target.reset();
+        }
+    </script>
+</body>
+</html>
