@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ragini Sharma | Handmade Crochet Creations</title>
+    <title>K.rocher | Handmade Crochet Creations</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
@@ -83,7 +83,7 @@
                         <i class="fa-solid fa-hands-holding-circle text-2xl"></i>
                     </div>
                     <div>
-                        <span class="font-serif text-2xl font-bold tracking-tight text-brand-900 block leading-none">Ragini Sharma</span>
+                        <span class="font-serif text-2xl font-bold tracking-tight text-brand-900 block leading-none">K.rocher</span>
                         <span class="text-xs tracking-widest text-brand-500 uppercase font-semibold">Crochet & Fiber Art</span>
                     </div>
                 </a>
@@ -137,7 +137,7 @@
 
                         <!-- Attractive Crochet Intro Paragraph -->
                         <p class="text-stone-600 text-lg sm:text-xl leading-relaxed">
-                            Welcome to my quiet corner of yarn and creativity! Hi, I'm <strong class="text-brand-800">Ragini Sharma</strong>. Every crochet creation here is crafted meticulously by hand using premium, ultra-soft organic yarns. From cosy wearable accessories to adorable plushies and timeless home decor, each loop carries warmth, passion, and personal craftsmanship designed to add joy to your life.
+                            Welcome to my quiet corner of yarn and creativity! Here at <strong class="text-brand-800">K.rocher</strong>, every crochet creation is crafted meticulously by hand using premium, ultra-soft organic yarns. From cosy wearable accessories to adorable plushies and timeless home decor, each loop carries warmth, passion, and personal craftsmanship designed to add joy to your life.
                         </p>
 
                         <div class="flex flex-wrap items-center gap-4 pt-2">
@@ -190,10 +190,10 @@
                             <div class="absolute -bottom-4 -right-4 w-72 h-72 bg-sage/30 rounded-full mix-blend-multiply filter blur-xl opacity-70"></div>
                             
                             <div class="relative bg-white p-4 rounded-3xl shadow-xl border border-brand-100">
-                                <img src="https://images.unsplash.com/photo-1615397349754-cfa2066a298e?auto=format&fit=crop&w=800&q=80" alt="Crochet Artisanal Crafting" class="rounded-2xl w-full h-80 sm:h-96 object-cover" onerror="this.src='https://placehold.co/600x800/f2e8e5/724237?text=Artisanal+Crochet+Art'">
+                                <img src="./images/WhatsApp Image 2026-08-18 at 01.07.12.jpeg" alt="Crochet Artisanal Crafting" class="rounded-2xl w-full h-80 sm:h-96 object-cover" onerror="this.src='https://placehold.co/600x800/f2e8e5/724237?text=Artisanal+Crochet+Art'">
                                 <div class="absolute bottom-8 left-8 right-8 bg-white/90 backdrop-blur-md p-4 rounded-xl shadow-lg border border-brand-200">
                                     <p class="font-serif font-bold text-brand-900 text-base">“Crochet turns simple yarn into tangible affection.”</p>
-                                    <p class="text-xs text-brand-600 font-semibold mt-1">— Ragini Sharma</p>
+                                    <p class="text-xs text-brand-600 font-semibold mt-1">— K.rocher</p>
                                 </div>
                             </div>
                         </div>
@@ -350,7 +350,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-8 border-b border-brand-800">
                 <div>
-                    <h3 class="font-serif text-xl font-bold text-white">Ragini Sharma</h3>
+                    <h3 class="font-serif text-xl font-bold text-white">K.rocher</h3>
                     <p class="text-xs text-brand-300 mt-2 leading-relaxed">
                         Crafting unique, high-quality crochet wearables, plushies, and custom fiber art pieces with love and passion.
                     </p>
@@ -371,7 +371,7 @@
                 </div>
             </div>
             <div class="pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-brand-400">
-                <p>&copy; <span id="year"></span> Ragini Sharma Crochet Creations. All Rights Reserved.</p>
+                <p>&copy; <span id="year"></span> K.rocher Crochet Creations. All Rights Reserved.</p>
                 <p class="mt-2 sm:mt-0">Handcrafted with care for handmade enthusiasts.</p>
             </div>
         </div>
@@ -416,12 +416,28 @@
     <!-- Product Quick View Modal -->
     <div id="product-modal" class="fixed inset-0 bg-stone-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto">
-            <button onclick="closeProductModal()" class="absolute top-4 right-4 p-2 text-stone-400 hover:text-stone-700 rounded-full bg-stone-100">
+            <button onclick="closeProductModal()" class="absolute top-4 right-4 p-2 text-stone-400 hover:text-stone-700 rounded-full bg-stone-100 z-10">
                 <i class="fa-solid fa-xmark text-lg"></i>
             </button>
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
-                <img id="modal-img" src="" alt="" class="w-full h-64 object-cover rounded-2xl border border-brand-100">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 items-start">
+                <div class="relative w-full h-64 rounded-2xl border border-brand-100 overflow-hidden group">
+                    <img id="modal-img" src="" alt="" class="w-full h-full object-cover transition-opacity duration-300">
+                    
+                    <!-- Slideshow controls (hidden by default, shown if multiple images) -->
+                    <button id="modal-prev-btn" onclick="prevSlide(event)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white text-stone-800 p-1.5 rounded-full shadow-sm hidden group-hover:block transition-all">
+                        <i class="fa-solid fa-chevron-left text-sm"></i>
+                    </button>
+                    <button id="modal-next-btn" onclick="nextSlide(event)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white text-stone-800 p-1.5 rounded-full shadow-sm hidden group-hover:block transition-all">
+                        <i class="fa-solid fa-chevron-right text-sm"></i>
+                    </button>
+                    
+                    <!-- Dots indicator -->
+                    <div id="modal-dots" class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 hidden">
+                        <!-- Dots injected here -->
+                    </div>
+                </div>
+
                 <div class="space-y-4">
                     <span id="modal-category" class="bg-brand-100 text-brand-700 text-xs px-3 py-1 rounded-full font-semibold uppercase">Category</span>
                     <h3 id="modal-title" class="font-serif text-2xl font-bold text-brand-900 leading-snug">Product Title</h3>
@@ -437,61 +453,68 @@
     </div>
 
     <script>
-        // Sample Products Catalog Data
-        // EDIT HERE: Replace the 'image' URL with your own product image URLs.
+        // Ensure you create an 'images' folder in your GitHub repo and put these pictures there.
         const productsData = [
             {
                 id: 1,
-                title: 'Pastel Daisy Square Tote Bag',
+                title: 'Straw Hat Keychain (Luffy)',
                 category: 'accessories',
-                price: 899,
-                image: 'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=600&q=80', // Replace this URL with your image
-                description: 'A charming hand-crocheted shoulder bag made with soft daisy granny squares. Features durable handles and inner cotton lining.'
+                price: 199,
+                // Using an array for images to support slideshow
+                images: [
+                    './images/WhatsApp Image 2026-08-18 at 01.06.40.jpeg',
+                    './images/WhatsApp Image 2026-08-18 at 01.06.42.jpeg'
+                ], 
+                description: 'A miniature crocheted straw hat keychain, perfect for anime fans. Sturdy and adorable.'
             },
             {
                 id: 2,
-                title: 'Cute Amigurumi Plush Bunny',
-                category: 'toys',
-                price: 599,
-                image: 'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&w=600&q=80', // Replace this URL with your image
-                description: 'Handcrafted plush toy bunny with safety eyes and soft hypoallergenic yarn stuffing. Perfect gift for kids or nursery decor.'
+                title: 'Textured Grey Beanie',
+                category: 'wearables',
+                price: 499,
+                images: [
+                    './images/WhatsApp Image 2026-08-18 at 01.10.03 (2).jpeg',
+                    './images/WhatsApp Image 2026-08-18 at 01.10.03 (3).jpeg'
+                ],
+                description: 'Warm, ribbed knit-style crochet beanie in a versatile light grey. Snug fit for chilly days.'
             },
             {
                 id: 3,
-                title: 'Boho Festival Crochet Crop Top',
-                category: 'wearables',
-                price: 1199,
-                image: 'https://images.unsplash.com/photo-1516762689617-e1cffffd478d?auto=format&fit=crop&w=600&q=80', // Replace this URL with your image
-                description: 'Breathable 100% organic cotton yarn crop top with custom adjustable back ties. Soft on skin and lightweight.'
+                title: 'Toothless Dragon Plushie',
+                category: 'toys',
+                price: 899,
+                images: [
+                    './images/WhatsApp Image 2026-08-18 at 01.10.03 (1).jpeg',
+                    './images/WhatsApp Image 2026-08-18 at 01.10.03.jpeg'
+                ],
+                description: 'Detailed, soft amigurumi black dragon plushie featuring striking green eyes and a tail fin.'
             },
             {
                 id: 4,
-                title: 'Handmade Coaster Set (4 Pcs)',
-                category: 'decor',
-                price: 349,
-                image: 'https://images.unsplash.com/photo-1615397349754-cfa2066a298e?auto=format&fit=crop&w=600&q=80', // Replace this URL with your image
-                description: 'Set of 4 absorbent flower-shaped crochet drink coasters. Protects tables while adding warm, rustic aesthetic.'
+                title: 'Cozy Pocket Pouch',
+                category: 'accessories',
+                price: 299,
+                images: [
+                    './images/WhatsApp Image 2026-08-18 at 01.07.12.jpeg' // Single image
+                ],
+                description: 'Small, sturdy crochet pouch with a button closure. Perfect for lipsticks, cards, or small essentials.'
             },
             {
                 id: 5,
-                title: 'Soft Pastel Baby Blanket',
-                category: 'decor',
-                price: 1499,
-                image: 'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=600&q=80', // Replace this URL with your image
-                description: 'Ultra-gentle knitted texture crochet blanket crafted with baby-safe acrylic yarn. Keeps little ones warm and comfortable.'
-            },
-            {
-                id: 6,
-                title: 'Retro Bucket Hat in Sage',
+                title: 'Black Star Fingerless Gloves',
                 category: 'wearables',
-                price: 699,
-                image: 'https://images.unsplash.com/photo-1576871337632-b9aef4c17ab9?auto=format&fit=crop&w=600&q=80', // Replace this URL with your image
-                description: 'Trendy vintage-inspired crochet bucket hat. Breathable, foldable, and perfect for sunny outdoor outings.'
+                price: 349,
+                images: [
+                    './images/WhatsApp Image 2026-08-18 at 01.09.15.jpeg' // Single image
+                ],
+                description: 'Grey fingerless wrist warmers featuring a prominent black star applique. Edgy and warm.'
             }
         ];
 
         // State Management
         let cart = [];
+        let currentModalProduct = null;
+        let currentImageIndex = 0;
 
         // DOM Loaded Initialization
         document.addEventListener('DOMContentLoaded', () => {
@@ -516,7 +539,7 @@
                 <div class="bg-brand-50/50 rounded-2xl border border-brand-100 overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between group">
                     <div>
                         <div class="relative overflow-hidden cursor-pointer" onclick="openProductModal(${product.id})">
-                            <img src="${product.image}" alt="${product.title}" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x600/f2e8e5/724237?text=${encodeURIComponent(product.title)}'">
+                            <img src="${product.images[0]}" alt="${product.title}" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x600/f2e8e5/724237?text=${encodeURIComponent(product.title)}'">
                             <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-brand-800 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-sm">
                                 ${product.category}
                             </span>
@@ -644,7 +667,7 @@
                 return;
             }
 
-            let message = "Hello Ragini! 👋 I would like to place an order for the following crochet items:\n\n";
+            let message = "Hello K.rocher! 👋 I would like to place an order for the following crochet items:\n\n";
             let totalCost = 0;
 
             cart.forEach((item, idx) => {
@@ -665,7 +688,7 @@
                 return;
             }
 
-            let body = "Hi Ragini,\n\nI would like to inquire/order the following crochet items:\n\n";
+            let body = "Hi K.rocher,\n\nI would like to inquire/order the following crochet items:\n\n";
             let totalCost = 0;
 
             cart.forEach((item, idx) => {
@@ -684,7 +707,31 @@
             const product = productsData.find(p => p.id === id);
             if (!product) return;
 
-            document.getElementById('modal-img').src = product.image;
+            currentModalProduct = product;
+            currentImageIndex = 0;
+
+            updateModalImage();
+
+            // Setup slideshow controls visibility
+            const prevBtn = document.getElementById('modal-prev-btn');
+            const nextBtn = document.getElementById('modal-next-btn');
+            const dotsContainer = document.getElementById('modal-dots');
+            
+            if (product.images.length > 1) {
+                prevBtn.classList.remove('hidden');
+                nextBtn.classList.remove('hidden');
+                dotsContainer.classList.remove('hidden');
+                
+                // Generate dots
+                dotsContainer.innerHTML = product.images.map((_, idx) => `
+                    <div class="w-2 h-2 rounded-full ${idx === 0 ? 'bg-brand-600' : 'bg-stone-300'} transition-colors duration-200"></div>
+                `).join('');
+            } else {
+                prevBtn.classList.add('hidden');
+                nextBtn.classList.add('hidden');
+                dotsContainer.classList.add('hidden');
+            }
+
             document.getElementById('modal-title').textContent = product.title;
             document.getElementById('modal-category').textContent = product.category;
             document.getElementById('modal-price').textContent = `₹${product.price}`;
@@ -699,8 +746,49 @@
             document.getElementById('product-modal').classList.remove('hidden');
         }
 
+        function updateModalImage() {
+            if (!currentModalProduct) return;
+            const imgEl = document.getElementById('modal-img');
+            
+            // Simple fade effect
+            imgEl.style.opacity = '0.5';
+            setTimeout(() => {
+                imgEl.src = currentModalProduct.images[currentImageIndex];
+                imgEl.style.opacity = '1';
+            }, 150);
+
+            // Update dots if they exist
+            const dots = document.getElementById('modal-dots').children;
+            if (dots.length > 0) {
+                Array.from(dots).forEach((dot, idx) => {
+                    if (idx === currentImageIndex) {
+                        dot.classList.remove('bg-stone-300');
+                        dot.classList.add('bg-brand-600');
+                    } else {
+                        dot.classList.remove('bg-brand-600');
+                        dot.classList.add('bg-stone-300');
+                    }
+                });
+            }
+        }
+
+        function nextSlide(e) {
+            e.stopPropagation(); // Prevent closing if click leaks
+            if (!currentModalProduct || currentModalProduct.images.length <= 1) return;
+            currentImageIndex = (currentImageIndex + 1) % currentModalProduct.images.length;
+            updateModalImage();
+        }
+
+        function prevSlide(e) {
+            e.stopPropagation();
+            if (!currentModalProduct || currentModalProduct.images.length <= 1) return;
+            currentImageIndex = (currentImageIndex - 1 + currentModalProduct.images.length) % currentModalProduct.images.length;
+            updateModalImage();
+        }
+
         function closeProductModal() {
             document.getElementById('product-modal').classList.add('hidden');
+            currentModalProduct = null;
         }
 
         function toggleMobileMenu() {
@@ -710,7 +798,7 @@
 
         function handleContactSubmit(e) {
             e.preventDefault();
-            alert('Thank you for reaching out! Ragini will get back to your inquiry shortly.');
+            alert('Thank you for reaching out! K.rocher will get back to your inquiry shortly.');
             e.target.reset();
         }
     </script>
